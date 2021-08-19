@@ -505,6 +505,40 @@ describe("store/schools", () => {
 					expect.any(Object)
 				);
 			});
+
+			it("should trigger error and goes into the catch block", async () => {
+				const receivedRequests = [];
+				const systemId = "id_1";
+				const ctxMock = {
+					commit: jest.fn(),
+					dispatch: jest.fn(),
+					rootState: {
+						schools: {
+							systems: [{ _id: "id_1" }, { _id: "id_2" }, { _id: "id_3" }],
+							school: {
+								id: "schoolId",
+							},
+						},
+					},
+				};
+
+				actions.$axios = {
+					$patch: async (url) => {
+						receivedRequests.push({ url });
+						return { data: "some data" };
+					},
+				};
+
+				await actions.deleteSystem(ctxMock, systemId);
+				expect(receivedRequests).toHaveLength(0);
+				expect(ctxMock.commit.mock.calls).toHaveLength(3);
+				expect(ctxMock.commit.mock.calls[1][0]).toStrictEqual("setError");
+				expect(ctxMock.commit.mock.calls[1][1]).toStrictEqual(
+					expect.any(Object)
+				);
+				expect(ctxMock.commit.mock.calls[2][0]).toStrictEqual("setLoading");
+				expect(ctxMock.commit.mock.calls[2][1]).toStrictEqual(false);
+			});
 		});
 	});
 
@@ -531,6 +565,62 @@ describe("store/schools", () => {
 
 				mutations.setSchool(mockState, schoolDataToBeChanged);
 				expect(mockState.school).toStrictEqual(schoolDataToBeChanged);
+			});
+		});
+
+		describe("setFileStorageTotal", () => {
+			it("should set the fileStorageTotal data", () => {
+				const mockState = {
+					fileStorageTotal: 0,
+				};
+
+				mutations.setFileStorageTotal(mockState, 1);
+				expect(mockState.fileStorageTotal).toStrictEqual(1);
+			});
+		});
+
+		describe("setFederalState", () => {
+			it("should set the federalState data", () => {
+				const mockState = {
+					federalState: {
+						_id: "0000b186816abba584714c57",
+						name: "Mecklenburg-Vorpommern",
+						abbreviation: "MV",
+					},
+				};
+
+				const expectedFileStorageState = {
+					_id: "0000b186816abba584714c56",
+					name: "Hessen",
+					abbreviation: "HE",
+				};
+
+				mutations.setFederalState(mockState, expectedFileStorageState);
+				expect(mockState.federalState).toStrictEqual(expectedFileStorageState);
+			});
+		});
+
+		describe("setSystems", () => {
+			it("should set the systems data", () => {
+				const mockState = {
+					systems: ["systems_id_1"],
+				};
+
+				const expectedSystemState = ["systems_id_2"];
+
+				mutations.setSystems(mockState, expectedSystemState);
+				expect(mockState.systems).toStrictEqual(expectedSystemState);
+			});
+		});
+
+		describe("setLoading", () => {
+			it("should set the loading data", () => {
+				const mockState = {
+					loading: false,
+				};
+
+				mutations.setLoading(mockState, true);
+				expect(mockState.loading).toStrictEqual(true);
 			});
 		});
 	});
@@ -561,18 +651,69 @@ describe("store/schools", () => {
 
 		describe("getFileStorageTotal", () => {
 			it("should return the fileStorageTotal state", () => {
-				const fileStorageTotal = {
-					_id: "123",
-					name: "some dummy data",
-				};
+				const fileStorageTotal = 0;
 				const mockState = {
 					fileStorageTotal,
 				};
 
 				const expectedState = getters.getFileStorageTotal(mockState);
 
-				expect(expectedState).toStrictEqual(expect.any(Object));
+				expect(expectedState).toStrictEqual(0);
 				expect(expectedState).toBe(fileStorageTotal);
+			});
+		});
+
+		describe("getCurrentYear", () => {
+			it("should return the current year state", () => {
+				const currentYear = {
+					id: "id_123",
+					data: "some data",
+				};
+				const mockState = {
+					currentYear,
+				};
+				const expectedState = getters.getCurrentYear(mockState);
+				expect(expectedState).toStrictEqual(expect.any(Object));
+				expect(expectedState).toBe(currentYear);
+			});
+		});
+
+		describe("getFederalState", () => {
+			it("should return the federalState state", () => {
+				const federalState = {
+					id: "id_123",
+					data: "some data",
+				};
+				const mockState = {
+					federalState,
+				};
+				const expectedState = getters.getFederalState(mockState);
+				expect(expectedState).toStrictEqual(expect.any(Object));
+				expect(expectedState).toBe(federalState);
+			});
+		});
+
+		describe("getSystems", () => {
+			it("should return the systems state", () => {
+				const systems = ["system"];
+				const mockState = {
+					systems,
+				};
+				const expectedState = getters.getSystems(mockState);
+				expect(expectedState).toStrictEqual(expect.any(Array));
+				expect(expectedState).toBe(systems);
+			});
+		});
+
+		describe("getLoading", () => {
+			it("should return the loading state", () => {
+				const loading = false;
+				const mockState = {
+					loading,
+				};
+				const expectedState = getters.getLoading(mockState);
+				expect(expectedState).toStrictEqual(expect.any(Boolean));
+				expect(expectedState).toBe(loading);
 			});
 		});
 	});
