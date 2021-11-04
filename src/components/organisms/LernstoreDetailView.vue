@@ -254,7 +254,7 @@ export default {
 		collectionLink() {
 			let relation = getMetadataAttribute(
 				this.resource.properties,
-				"ccm:hpi_lom_relation"
+				"ccm:lom_relation"
 			);
 			if (relation) {
 				relation = JSON.parse(relation.replace(/\'/g, '"'));
