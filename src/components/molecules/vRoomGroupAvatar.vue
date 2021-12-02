@@ -1,6 +1,6 @@
 <template>
 	<div
-		draggable="true"
+		:draggable="draggable"
 		class="group-avatar"
 		@dragstart="startDragAvatar"
 		@drop.prevent="dropAvatar"
@@ -28,6 +28,7 @@
 					:items="data.groupElements"
 					condense-layout
 					item-size="1em"
+					:can-draggable="draggable"
 					:col-count="itemSpecs.columnCount"
 					:max-items="itemSpecs.maxItem"
 				/>
@@ -59,6 +60,9 @@ export default {
 			type: String,
 			default: "",
 		},
+		draggable: {
+			type: Boolean,
+		},
 	},
 	data() {
 		return {
@@ -78,7 +82,9 @@ export default {
 	},
 	methods: {
 		startDragAvatar() {
-			this.$emit("startDrag", this.data);
+			if (this.draggable) {
+				this.$emit("startDrag", this.data);
+			}
 		},
 		dragLeave() {
 			this.hovered = false;

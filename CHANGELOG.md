@@ -12,6 +12,10 @@ Allowed Types of change: `Added`, `Changed`, `Deprecated`, `Removed`, `Fixed`, `
 
 ### Fixed
 
+### Added
+
+- BC-908 - Added disable/enable button for handling dragging/scrolling feature on mobile devices
+
 ## [26.19.0] - 2021-11-30
 
 ### Fixed

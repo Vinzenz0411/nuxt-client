@@ -1,5 +1,14 @@
 <template>
 	<default-wireframe ref="main" :headline="title" :full-width="true">
+		<v-row>
+			<v-btn
+				v-if="showAllowDraggingButton"
+				color="secondary"
+				class="enable-disable"
+				@click="allowDragging = !allowDragging"
+				>{{ allowDragging ? "Disable Dragging" : "Enable Dragging" }}</v-btn
+			>
+		</v-row>
 		<v-row class="text-left pl-2">
 			<v-col cols="8" sm="6" md="8" lg="8">
 				<v-text-field
@@ -39,6 +48,7 @@
 						:data="getDataObject(rowIndex, colIndex)"
 						:size="dimensions.cellWidth"
 						:device="device"
+						:draggable="allowDragging"
 						@clicked="openDialog(getDataObject(rowIndex, colIndex).id)"
 						@startDrag="onStartDrag($event, { x: colIndex, y: rowIndex })"
 						@drop="addGroupElements({ x: colIndex, y: rowIndex })"
@@ -52,9 +62,10 @@
 						:item="getDataObject(rowIndex, colIndex)"
 						:size="dimensions.cellWidth"
 						:show-badge="true"
-						:draggable="true"
+						:draggable="allowDragging"
 						@startDrag="onStartDrag($event, { x: colIndex, y: rowIndex })"
 						@drop="setGroupElements({ x: colIndex, y: rowIndex })"
+						@touched="allowDragging = true"
 					></vRoomAvatar>
 				</div>
 				<div v-else class="d-flex justify-center">
@@ -71,6 +82,7 @@
 			v-model="groupDialog.isOpen"
 			:group-data="groupDialog.groupData"
 			:avatar-size="dimensions.cellWidth"
+			:draggable="allowDragging"
 			@drag-from-group="dragFromGroup"
 		>
 		</room-modal>
@@ -117,6 +129,8 @@ export default {
 			draggedElementName: "",
 			mdiMagnify,
 			searchText: "",
+			allowDragging: false,
+			showAllowDraggingButton: true,
 		};
 	},
 	computed: {
@@ -168,10 +182,14 @@ export default {
 				case "desktop":
 					this.dimensions.colCount = 8;
 					this.dimensions.cellWidth = "7em";
+					this.showAllowDraggingButton = false;
+					this.allowDragging = true;
 					break;
 				case "large":
 					this.dimensions.colCount = 12;
 					this.dimensions.cellWidth = "7em";
+					this.showAllowDraggingButton = false;
+					this.allowDragging = true;
 					break;
 				case "mobile":
 					this.dimensions.colCount = 4;

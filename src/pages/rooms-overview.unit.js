@@ -37,8 +37,8 @@ const mockStoreData = [
 		shortTitle: "Bi",
 		displayColor: "#EC407A",
 		url: "/api/xxxx/1234w",
-		xPosition: 5,
-		yPosition: 5,
+		xPosition: 2,
+		yPosition: 3,
 		groupElements: [
 			{
 				id: "5",
@@ -123,7 +123,7 @@ describe("RoomPage", () => {
 		const wrapper = getWrapper("mobile");
 		await flushPromises();
 		const avatarComponents = wrapper.findAll(".room-avatar");
-		expect(avatarComponents).toHaveLength(2);
+		expect(avatarComponents).toHaveLength(5);
 	});
 
 	it("should display 1 group-avatar component", async () => {
@@ -176,7 +176,7 @@ describe("RoomPage", () => {
 		expect(wrapper.vm.$refs["4-4"][0].$options["_componentTag"]).toStrictEqual(
 			"vRoomAvatar"
 		);
-		expect(wrapper.vm.$refs["5-5"][0].$options["_componentTag"]).toStrictEqual(
+		expect(wrapper.vm.$refs["3-2"][0].$options["_componentTag"]).toStrictEqual(
 			"vRoomGroupAvatar"
 		);
 		expect(wrapper.vm.$refs["3-3"][0].$options["_componentTag"]).toStrictEqual(
@@ -309,22 +309,22 @@ describe("RoomPage", () => {
 				yPosition: 1,
 			},
 			to: {
-				x: 5,
-				y: 5,
+				x: 2,
+				y: 3,
 			},
 		};
 		await flushPromises();
 		expect(wrapper.vm.$refs["1-1"][0].$options["_componentTag"]).toStrictEqual(
 			"vRoomAvatar"
 		);
-		expect(wrapper.vm.$refs["5-5"][0].$options["_componentTag"]).toStrictEqual(
+		expect(wrapper.vm.$refs["3-2"][0].$options["_componentTag"]).toStrictEqual(
 			"vRoomGroupAvatar"
 		);
 
 		const fromAvatarComponent = wrapper.findComponent({ ref: "1-1" });
 		fromAvatarComponent.trigger("dragstart");
 
-		const toAvatarComponent = wrapper.findComponent({ ref: "5-5" });
+		const toAvatarComponent = wrapper.findComponent({ ref: "3-2" });
 		toAvatarComponent.trigger("drop");
 
 		expect(spyMocks.addGroupElementsMock).toHaveBeenCalled();
@@ -447,5 +447,44 @@ describe("RoomPage", () => {
 		const avatarComponentsAfterDragging = wrapper.findAll(".room-avatar");
 		expect(avatarComponentsAfterDragging).toHaveLength(6);
 		expect(wrapper.vm.$data.searchText).toStrictEqual("");
+	});
+
+	it("should NOT be 'draggable' on mobile devices as default", async () => {
+		const wrapper = getWrapper("mobile");
+		await flushPromises();
+
+		expect(wrapper.vm.$data.allowDragging).toBe(false);
+
+		const avatarComponent = wrapper.findComponent({ ref: "1-1" });
+		const groupComponent = wrapper.findComponent({ ref: "3-2" });
+		expect(avatarComponent.vm.$props.draggable).toBe(false);
+		expect(groupComponent.vm.$props.draggable).toBe(false);
+
+		avatarComponent.trigger("dragstart");
+		expect(wrapper.vm.$data.draggedElement.from).toBeNull();
+		groupComponent.trigger("dragstart");
+		expect(wrapper.vm.$data.draggedElement.from).toBeNull();
+	});
+
+	it("should be 'draggable' on mobile devices after 'enable' button clicked", async () => {
+		const wrapper = getWrapper("mobile");
+		await flushPromises();
+
+		expect(wrapper.vm.$data.allowDragging).toBe(false);
+
+		wrapper.find(".enable-disable").trigger("click");
+
+		expect(wrapper.vm.$data.allowDragging).toBe(true);
+		await flushPromises();
+
+		const avatarComponent = wrapper.findComponent({ ref: "1-1" });
+		const groupComponent = wrapper.findComponent({ ref: "3-2" });
+		expect(avatarComponent.vm.$props.draggable).toBe(true);
+		expect(groupComponent.vm.$props.draggable).toBe(true);
+
+		avatarComponent.trigger("dragstart");
+		expect(wrapper.vm.$data.draggedElement.from).toStrictEqual({ x: 1, y: 1 });
+		groupComponent.trigger("dragstart");
+		expect(wrapper.vm.$data.draggedElement.from).toStrictEqual({ x: 2, y: 3 });
 	});
 });
