@@ -452,5 +452,5 @@ describe("RoomPage", () => {
 		expect(wrapper.vm.$data.searchText).toStrictEqual("");
 	});
 
-	it.todo("should set default group name after grouping elements")
+	it.todo("should set default group name after grouping elements");
 });
