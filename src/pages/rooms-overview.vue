@@ -96,6 +96,7 @@ import vRoomGroupAvatar from "@components/molecules/vRoomGroupAvatar";
 import RoomModal from "@components/molecules/RoomModal";
 import RoomsModule from "@store/rooms";
 import { mdiMagnify } from "@mdi/js";
+import AuthModule from "@store/auth";
 
 export default {
 	components: {
@@ -253,6 +254,7 @@ export default {
 				toElementName == "vRoomAvatar"
 			) {
 				await this.savePosition();
+				this.defaultNaming(pos);
 			}
 		},
 		addGroupElements(pos) {
@@ -291,6 +293,26 @@ export default {
 		async savePosition() {
 			await RoomsModule.align(this.draggedElement);
 			this.groupDialog.groupData = {};
+		},
+		defaultNaming(pos) {
+			let title = "";
+			switch (AuthModule.getLocale) {
+				case "en":
+					title = "Courses";
+					break;
+				case "es":
+					title = "Cursos";
+					break;
+				default:
+					title = "Kurse";
+					break;
+			}
+			const payload = {
+				title,
+				xPosition: pos.x,
+				yPosition: pos.y,
+			};
+			RoomsModule.update(payload);
 		},
 	},
 };
