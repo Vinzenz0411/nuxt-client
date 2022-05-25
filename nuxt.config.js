@@ -37,7 +37,7 @@ module.exports = {
     publicRuntimeConfig: {
         FALLBACK_DISABLED: process.env.FALLBACK_DISABLED || false,
         axios: {
-            browserBaseURL: process.env.API_URL || "http://localhost:4000/api",
+            browserBaseURL: process.env.API_URL || "http://192.52.43.231:4000/api",
         },
         FEATURE_MATRIX_MESSENGER_ENABLED: process.env.FEATURE_MATRIX_MESSENGER_ENABLED,
         MATRIX_MESSENGER__EMBED_URI: process.env.MATRIX_MESSENGER__EMBED_URI,
