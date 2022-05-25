@@ -14,13 +14,13 @@
 				<base-icon class="menu-icon" source="fa" icon="bars" />
 			</base-button>
 			<div class="space"></div>
-			<base-button
+			<!-- <base-button
 				class="item fullscreen-button"
 				design="text icon"
 				@click.native="sendEvent('fullscreen')"
 			>
 				<base-icon source="fa" icon="expand" />
-			</base-button>
+			</base-button> -->
 			<template v-for="action in actions">
 				<popup-icon
 					:key="action.title"
@@ -156,6 +156,7 @@ export default {
 		width: 100%;
 		height: 100%;
 		padding-right: var(--space-sm);
+		background-color: #93A7CA;
 
 		.space {
 			flex-grow: 1;

@@ -71,6 +71,10 @@ export default {
 		font-size: 20px;
 	}
 
+	:hover{
+		background-color: darken($color: #93A7CA, $amount: 5%) !important;
+	}
+
 	:focus-within {
 		.icon-button {
 			background-color: var(--color-gray-light);

@@ -1,14 +1,14 @@
 <template>
 	<aside class="sidebar" :class="{ expanded: expandedMenu }">
-		<div class="top-sidebar" @click="$emit('input')">
+		<div class="top-sidebar" style="background-color: #93A7CA" @click="$emit('input')">
 			<img
 				class="logo logo-full"
-				src="@assets/img/logo/logo-image-mono.svg"
+				src="@assets/img/logo/schulkaepseleLogo.png"
 				alt="Schulcloud Logo"
 			/>
 			<img
 				class="logo logo-small"
-				src="@assets/img/logo/logo-transparent-mono-48-48.svg"
+				src="@assets/img/logo/schulkaepseleLogo.png"
 				alt="Schulcloud Logo"
 			/>
 		</div>
@@ -41,7 +41,7 @@
 								:fill="
 									route.active || route.childActive
 										? 'var(--color-sidebar-menu-item-active)'
-										: 'var(--color-sidebar-menu-item)'
+										: 'var(--color-white)'
 								"
 								class="icon"
 							/>
@@ -69,7 +69,7 @@
 									:fill="
 										child.active
 											? 'var(--color-sidebar-menu-item-active)'
-											: 'var(--color-sidebar-menu-item)'
+											: 'var(--color-white)'
 									"
 									class="icon"
 								/>
@@ -109,6 +109,13 @@ export default {
 <style lang="scss" scoped>
 /* stylelint-disable sh-waqar/declaration-use-variable */
 
+div:nth-child(odd) {
+  background-color: #5672A1;
+}
+div:nth-child(even) {
+  background-color: #93A7CA;
+}
+
 @import "@styles";
 
 @keyframes menu-expand {
@@ -121,6 +128,8 @@ export default {
 	}
 }
 
+
+
 .sidebar {
 	position: fixed;
 	top: var(--topbar-height);
@@ -130,9 +139,10 @@ export default {
 	display: none;
 	height: calc(100vh - 55px);
 	overflow-y: auto;
-	background-color: var(--color-white);
-	box-shadow: 0 5px 5px var(--color-gray-light);
+	// box-shadow: 0 5px 5px var(--color-gray-light);
 	transition: display 2s;
+
+
 
 	&.expanded {
 		display: flex;
@@ -197,6 +207,8 @@ export default {
 			margin: 0;
 			list-style-type: none;
 
+			
+
 			.list-item {
 				width: 100%;
 				height: var(--sidebar-item-height);
@@ -220,6 +232,9 @@ export default {
 					}
 				}
 
+			
+
+
 				.list-content {
 					display: flex;
 					align-items: center;
@@ -228,13 +243,14 @@ export default {
 					padding: 0 20px;
 					font-size: 16px;
 					line-height: 100%;
-					color: var(--color-sidebar-menu-item);
+					color: white;
 					border-bottom: none;
 
 					.icon {
 						width: 25px;
 						margin-right: 6px;
 						font-size: 20px;
+						color: white;
 					}
 
 					.title {
@@ -250,17 +266,21 @@ export default {
 					}
 				}
 
-				&:hover,
+				&
+				&:hover{
+					background-color: rgb(255, 255, 255, 0.5);
+				}
 				&.active {
-					color: var(--color-sidebar-menu-item-active);
+					color: var(--color-sidebar-menu-item-active) !important;
 					cursor: pointer;
-					background-color: var(--color-sidebar-active-bg);
 				}
 
 				&.active .list-content,
 				&.child-active .list-content {
 					color: var(--color-sidebar-menu-item-active);
 				}
+
+				
 			}
 		}
 	}
