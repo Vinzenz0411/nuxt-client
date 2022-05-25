@@ -71,7 +71,7 @@ export default {
 	font-family: var(--font-accent);
 	font-size: var(--text-lg);
 	font-weight: var(--font-weight-bold);
-	color: var(--color-white);
+	color: #93A7CA;
 	cursor: pointer;
 	-webkit-user-select: none;
 	background-color: var(--color-secondary);

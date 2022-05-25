@@ -1,6 +1,6 @@
 export default function (data) {
 	return {
-		color: ["#9e292b"],
+		color: ["#E30614"],
 		legend: {},
 		tooltip: {},
 		xAxis: {
