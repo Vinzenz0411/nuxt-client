@@ -3,13 +3,10 @@ $darken: 25%;
 
 :root {
 	/* main colors */
-<<<<<<< HEAD
 	--color-primary: #1f6cf1;
 	--color-primary-light: #35435C;
-=======
 	--color-primary: #E30614 ;
 	--color-primary-light: color-mod(var(--color-primary) tint(#{$brighten}));
->>>>>>> ca871e1df15a5789d13e699088231911ad2f34ba
 	--color-primary-dark: color-mod(var(--color-primary) shade(#{$darken}));
 	--color-secondary: #5672A1;
 	--color-secondary-light: #617480;
