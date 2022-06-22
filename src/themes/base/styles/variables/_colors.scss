@@ -3,10 +3,15 @@ $darken: 25%;
 
 :root {
 	/* main colors */
+<<<<<<< HEAD
 	--color-primary: #1f6cf1;
 	--color-primary-light: #35435C;
+=======
+	--color-primary: #E30614 ;
+	--color-primary-light: color-mod(var(--color-primary) tint(#{$brighten}));
+>>>>>>> ca871e1df15a5789d13e699088231911ad2f34ba
 	--color-primary-dark: color-mod(var(--color-primary) shade(#{$darken}));
-	--color-secondary: #54616e;
+	--color-secondary: #5672A1;
 	--color-secondary-light: #617480;
 	--color-secondary-dark: #344450;
 	--color-accent: #e98404;
@@ -80,4 +85,5 @@ $darken: 25%;
 	--color-sidebar-active-bg: var(--color-gray-light);
 	--color-sidebar-menu-item: var(--color-secondary);
 	--color-sidebar-menu-item-active: var(--color-primary);
+	--color-sidebar-menu-item-inactive: var(--color-white);
 }

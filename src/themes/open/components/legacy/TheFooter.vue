@@ -35,6 +35,7 @@
 		</div>
 		<p class="bottom-line">
 			Made with
+<<<<<<< HEAD
 			<span class="heart">❤</span> in Furtwangen im Schwarzwald |
 			<br>
 			powered by:
@@ -43,6 +44,9 @@
 					src="@assets/img/lokalise_logo.svg"
 					:alt="$t('components.legacy.footer.lokalise_logo_alt')"
 			/></base-link>
+=======
+			<span class="heart">❤</span> in Furtwangen |
+>>>>>>> ca871e1df15a5789d13e699088231911ad2f34ba
 		</p>
 	</footer>
 </template>

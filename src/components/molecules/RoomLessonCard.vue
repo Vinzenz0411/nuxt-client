@@ -33,7 +33,6 @@
 					.split(' ')
 					.join('-')}`"
 				text
-				:color="titleColor"
 				@click.stop="action.action"
 			>
 				{{ action.name }}</v-btn
@@ -124,7 +123,7 @@ export default {
 					icon: this.icons.mdiPencilOutline,
 					action: () =>
 						this.redirectAction(
-							`/courses/${this.room.roomId}/topics/${this.lesson.id}/edit`
+							`/courses/${this.room.roomId}/topics/${this.lesson.id}/edit?returnUrl=rooms/${this.room.roomId}`
 						),
 					name: this.$t("pages.room.taskCard.label.edit"),
 				});

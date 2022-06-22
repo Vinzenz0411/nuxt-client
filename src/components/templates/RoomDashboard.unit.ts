@@ -1,5 +1,6 @@
 import { mount } from "@vue/test-utils";
 import { nextTick } from "vue/types/umd";
+import vCustomEmptyState from "../molecules/vCustomEmptyState.vue";
 import RoomDashboard from "./RoomDashboard.vue";
 import RoomModule from "@store/room";
 import TaskModule from "@/store/tasks";
@@ -80,6 +81,13 @@ const mockData = {
 	],
 };
 
+const emptyMockData = {
+	roomId: "234",
+	title: "Sample Course 2",
+	displayColor: "green",
+	elements: [],
+};
+
 const getWrapper = (props: object, options?: object) => {
 	return mount<any>(RoomDashboard, {
 		...createComponentMocks({
@@ -132,6 +140,26 @@ describe("@components/templates/RoomDashboard.vue", () => {
 
 			expect(wrapper.vm.taskData).toStrictEqual(expectedObject);
 		});
+
+		it("Should render empty state for teacher", async () => {
+			const wrapper = getWrapper({ roomData: emptyMockData, role: "teacher" });
+			const emptyStateComponent = wrapper.find(
+				`[data-testid="empty-state-item"]`
+			) as any;
+			expect(emptyStateComponent.exists()).toBe(true);
+			expect(emptyStateComponent.vm.imgHeight).toStrictEqual("200px");
+			expect(emptyStateComponent.vm.title).toStrictEqual(wrapper.vm.$i18n.t("pages.room.teacher.emptyState"));
+		});
+
+		it("Should render empty state for students", async () => {
+			const wrapper = getWrapper({ roomData: emptyMockData, role: "student" });
+			const emptyStateComponent = wrapper.find(
+				`[data-testid="empty-state-item"]`
+			) as any;
+			expect(emptyStateComponent.exists()).toBe(true);
+			expect(emptyStateComponent.vm.imgHeight).toStrictEqual("200px");
+			expect(emptyStateComponent.vm.title).toStrictEqual(wrapper.vm.$i18n.t("pages.room.student.emptyState"));
+		})
 	});
 	describe("Drag & Drop operations", () => {
 		it("should sortable value 'true' if user is a 'teacher'", () => {
@@ -285,6 +313,7 @@ describe("@components/templates/RoomDashboard.vue", () => {
 			expect(openDeleteDialogMock).toHaveBeenCalled();
 			expect(openDeleteDialogMock.mock.calls[0][0].id).toStrictEqual("3456");
 			expect(openDeleteDialogMock.mock.calls[0][1]).toStrictEqual("lesson");
+<<<<<<< HEAD
 		});
 
 		it("should call the openItemDeleteDialog method when task should be deleted", async () => {
@@ -299,6 +328,22 @@ describe("@components/templates/RoomDashboard.vue", () => {
 			expect(openDeleteDialogMock.mock.calls[0][1]).toStrictEqual("task");
 		});
 
+=======
+		});
+
+		it("should call the openItemDeleteDialog method when task should be deleted", async () => {
+			const openDeleteDialogMock = jest.fn();
+			const wrapper = getWrapper({ roomData: mockData, role: "teacher" });
+			wrapper.vm.openItemDeleteDialog = openDeleteDialogMock;
+			const taskCard = wrapper.find(".task-card");
+
+			taskCard.vm.$emit("delete-task");
+			expect(openDeleteDialogMock).toHaveBeenCalled();
+			expect(openDeleteDialogMock.mock.calls[0][0].id).toStrictEqual("2345");
+			expect(openDeleteDialogMock.mock.calls[0][1]).toStrictEqual("task");
+		});
+
+>>>>>>> ca871e1df15a5789d13e699088231911ad2f34ba
 		it("item delete modal should be visible if 'itemDelete.isOpen' is set true", async () => {
 			const wrapper = getWrapper({ roomData: mockData, role: "teacher" });
 			const deleteModal = wrapper.find(
@@ -327,6 +372,8 @@ describe("@components/templates/RoomDashboard.vue", () => {
 		it("should call store methods after modal emits 'dialog-confirmed' when deleting task", async () => {
 			const deleteTaskMock = jest.fn();
 			const fetchContentMock = jest.fn();
+<<<<<<< HEAD
+=======
 			const deleteLessonMock = jest.fn();
 			const wrapper = getWrapper({ roomData: mockData, role: "teacher" });
 			TaskModule.deleteTask = deleteTaskMock;
@@ -349,6 +396,36 @@ describe("@components/templates/RoomDashboard.vue", () => {
 		it("should call store methods after modal emits 'dialog-confirmed' when deleting lesson", async () => {
 			const deleteTaskMock = jest.fn();
 			const fetchContentMock = jest.fn();
+>>>>>>> ca871e1df15a5789d13e699088231911ad2f34ba
+			const deleteLessonMock = jest.fn();
+			const wrapper = getWrapper({ roomData: mockData, role: "teacher" });
+			TaskModule.deleteTask = deleteTaskMock;
+			RoomModule.fetchContent = fetchContentMock;
+			RoomModule.deleteLesson = deleteLessonMock;
+<<<<<<< HEAD
+			const taskCard = wrapper.find(".task-card");
+
+			taskCard.vm.$emit("delete-task");
+=======
+			const lessonCard = wrapper.find(".lesson-card");
+
+			lessonCard.vm.$emit("delete-lesson");
+>>>>>>> ca871e1df15a5789d13e699088231911ad2f34ba
+			await wrapper.vm.$nextTick();
+			const deleteModal = wrapper.find(
+				`[data-testid="delete-dialog-item"]`
+			) as any;
+			deleteModal.vm.$emit("dialog-confirmed");
+			await wrapper.vm.$nextTick();
+<<<<<<< HEAD
+			expect(deleteTaskMock).toHaveBeenCalled();
+			expect(fetchContentMock).toHaveBeenCalled();
+			expect(deleteLessonMock).not.toHaveBeenCalled();
+		});
+
+		it("should call store methods after modal emits 'dialog-confirmed' when deleting lesson", async () => {
+			const deleteTaskMock = jest.fn();
+			const fetchContentMock = jest.fn();
 			const deleteLessonMock = jest.fn();
 			const wrapper = getWrapper({ roomData: mockData, role: "teacher" });
 			TaskModule.deleteTask = deleteTaskMock;
@@ -363,6 +440,8 @@ describe("@components/templates/RoomDashboard.vue", () => {
 			) as any;
 			deleteModal.vm.$emit("dialog-confirmed");
 			await wrapper.vm.$nextTick();
+=======
+>>>>>>> ca871e1df15a5789d13e699088231911ad2f34ba
 			expect(deleteTaskMock).not.toHaveBeenCalled();
 			expect(fetchContentMock).not.toHaveBeenCalled();
 			expect(deleteLessonMock).toHaveBeenCalled();

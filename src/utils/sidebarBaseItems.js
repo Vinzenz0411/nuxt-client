@@ -32,6 +32,7 @@ export default [
 			},
 		],
 	}, 
+<<<<<<< HEAD
 	{
 		title: "global.sidebar.courses",
 		href: "/courses",
@@ -40,6 +41,9 @@ export default [
 		linkType: "legacyCourse",
 		visibility: "false",
 	},
+=======
+	
+>>>>>>> ca871e1df15a5789d13e699088231911ad2f34ba
 	{
 		title: "global.sidebar.courses",
 		to: "/rooms-overview",
@@ -95,6 +99,7 @@ export default [
 				icon: "folder-open-o",
 				testId: "Neuigkeiten",
 			},
+<<<<<<< HEAD
 			{
 				title: "global.sidebar.lernstore",
 				to: "/content",
@@ -102,6 +107,8 @@ export default [
 				permission: "LERNSTORE_VIEW",
 				testId: "Lern-Store",
 			},
+=======
+>>>>>>> ca871e1df15a5789d13e699088231911ad2f34ba
 		],
 	},
 	{
@@ -138,8 +145,20 @@ export default [
 		],
 	},
 	{
+<<<<<<< HEAD
 		title: "global.sidebar.games",
 		to: "/games/",
+=======
+		title: "global.sidebar.lernstore",
+		to: "/content",
+		icon: "search",
+		permission: "LERNSTORE_VIEW",
+		testId: "Lern-Store",
+	},
+	{
+		title: "global.sidebar.addons",
+		href: "/addons",
+>>>>>>> ca871e1df15a5789d13e699088231911ad2f34ba
 		icon: "puzzle-piece",
 		testId: "Aufgaben",
 	},

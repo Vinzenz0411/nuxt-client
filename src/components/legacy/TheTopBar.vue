@@ -14,13 +14,13 @@
 				<base-icon class="menu-icon" source="fa" icon="bars" />
 			</base-button>
 			<div class="space"></div>
-			<base-button
+			<!-- <base-button
 				class="item fullscreen-button"
 				design="text icon"
 				@click.native="sendEvent('fullscreen')"
 			>
 				<base-icon source="fa" icon="expand" />
-			</base-button>
+			</base-button> -->
 			<template v-for="action in actions">
 				<popup-icon
 					:key="action.title"
@@ -43,19 +43,24 @@
 
 			<popup-icon-initials
 				v-if="user"
-				:firstname="user.firstName || 'Unknown'"
-				:lastname="user.lastName || 'Unknown'"
-				:user="user.user"
-				:role="role"
+				:first-name="user.firstName || 'Unknown'"
+				:last-name="user.lastName || 'Unknown'"
+				:user-role="role"
 				class="item"
 			>
 				<language-menu />
-				<a href="/account" class="account-link">{{
-					$t("global.topbar.settings")
-				}}</a>
+				<a
+					href="/account"
+					class="account-link"
+					role="menuitem"
+					:aria-label="$t('global.topbar.settings')"
+					>{{ $t("global.topbar.settings") }}</a
+				>
 				<button
 					class="logout-button"
 					data-testid="logout"
+					role="menuitem"
+					:aria-label="$t('common.labels.logout')"
 					@click="sendEvent('logout')"
 				>
 					{{ $t("common.labels.logout") }}
@@ -156,6 +161,7 @@ export default {
 		width: 100%;
 		height: 100%;
 		padding-right: var(--space-sm);
+		background-color: #93A7CA;
 
 		.space {
 			flex-grow: 1;
@@ -241,7 +247,8 @@ export default {
 	border-color: transparent;
 	outline: none;
 
-	&:hover {
+	&:hover,
+	&:focus {
 		background-color: var(--hover-color);
 	}
 }

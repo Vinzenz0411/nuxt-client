@@ -101,12 +101,14 @@ describe("@components/molecules/RoomLessonCard", () => {
 	describe("user role based behaviors and actions", () => {
 		describe("teachers", () => {
 			const role = "teacher";
-			it("should have one action button if lesson is hidden with correct color", () => {
+			it("should have one action button if lesson is hidden", () => {
 				const wrapper = getWrapper({ ...hiddenTestProps, role });
 				const actionButtons = wrapper.findAll(".action-button");
 
 				expect(actionButtons).toHaveLength(1);
-				expect(actionButtons.wrappers[0].vm._props.color).toContain("#54616e");
+				expect(actionButtons.wrappers[0].element.textContent).toContain(
+					wrapper.vm.$i18n.t("pages.room.lessonCard.label.post")
+				);
 			});
 
 			it("should have no action button when lesson is visible", () => {
@@ -129,7 +131,7 @@ describe("@components/molecules/RoomLessonCard", () => {
 
 				expect(redirectActionMock).toHaveBeenCalled();
 				expect(redirectActionMock.mock.calls[0][0]).toStrictEqual(
-					"/courses/456/topics/123/edit"
+					"/courses/456/topics/123/edit?returnUrl=rooms/456"
 				);
 			});
 

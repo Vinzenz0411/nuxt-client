@@ -1,6 +1,6 @@
 export default function (dateLabels, studentsData, teachersData) {
 	return {
-		color: ["#2f4554", "#9e292b"],
+		color: ["#2f4554", "#E30614"],
 		tooltip: {
 			trigger: "axis",
 			axisPointer: {
