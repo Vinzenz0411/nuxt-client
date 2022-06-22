@@ -117,6 +117,7 @@ module.exports = {
 	 */
 	plugins: [
 		// sorting is important
+		"@/plugins/bootstrap-vue",
 		"@plugins/polyfills",
 		"@plugins/axios-accessor",
 		"@plugins/axios",
@@ -128,6 +129,7 @@ module.exports = {
 		"@plugins/datetime",
 		"@plugins/vuelidate",
 		"@plugins/iconfonts",
+
 	],
 
 	/*
