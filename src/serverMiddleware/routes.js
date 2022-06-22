@@ -48,6 +48,14 @@ const routes = [
 	`^/rooms/${mongoId}/?$`,
 	// `^/courses/?$`,
 	`^/poc-files/?$`,
+	`^/plans/?$`,
+	`^/vertretung/?$`,
+	`^/games/?$`,
+	`^/memorie/?$`,
+	`^/memorielvl2/?$`,
+	`^/memorielvl3/?$`,
+	`^/memorie/add`,
+
 ];
 
 const uuid =
