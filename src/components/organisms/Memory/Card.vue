@@ -4,7 +4,7 @@
     :class="{'flipped': active}"
     @click="clickHandler"
   >
-  <div class="imgcon h-full w-full custom-green front shadow-lg flex items-center justify-center">
+  <div id="card" class="imgcon h-full w-full custom-green front shadow-lg flex items-center justify-center">
       <h6>{{name}}</h6>
       <h6>->{{trans}}</h6>
     <img
@@ -47,7 +47,7 @@ export default {
   transition-delay: 0.2s;
 }
 .cardback {
-  height: 110px;
+  height: 130px;
   width: 90px;
   transition: all ease-in 0.2s;
   transition-delay: 0.2s;
@@ -55,5 +55,12 @@ export default {
 .flipped .cardback {
   transform: rotateY(90deg);
   transition-delay: 0s;
+}
+#card{
+  height: 110px;
+  width: 100px;
+}
+h6{
+  margin-top: -10px;
 }
 </style>

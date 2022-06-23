@@ -1,7 +1,7 @@
 <template>
 
   <div class="memory">
-    <h3>Geschichts Memory</h3>
+    <h3>Geschichts Memory 7a</h3>
       <div class="d-flex flex-row justify-content-center py-3">
             <div class="turns p-3"><span class="btn btn-info">Versuche : <span class="badge" :class="finish ? 'badge-success' : 'badge-light'">{{turns}}</span> </span></div>
             <div class="totalTime p-3"><span class="btn btn-info">Timer : <span class="badge" :class="finish ? 'badge-success' : 'badge-light'">{{min}} : {{sec}}</span></span></div>
@@ -192,7 +192,8 @@ export default {
 .container {
   display: grid;
   place-items: center;
-  min-height: 100vh;
+  margin-top: 80px;
+  margin-bottom: 250px;
 }
 
 .heading {
@@ -231,7 +232,20 @@ export default {
 .card.checked img {
   opacity: 1;
 }
+img{
+  max-width: auto;
+  max-height: 60px;
+}
+span{
+  margin: 10px;
+  padding: 10px;
 
+}
+button{
+  margin-top: -10px;
+  padding: 10px;
+  margin-left: 10px
+}
 
 
 @keyframes shake {
@@ -280,6 +294,9 @@ export default {
 .totalTime .btn {
   background-color: black;
   color: whitesmoke;
+}
+h3{
+  margin-bottom: 80px;
 }
 
 </style>
