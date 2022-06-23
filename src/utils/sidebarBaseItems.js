@@ -66,37 +66,10 @@ export default [
 		testId: "Aufgaben",
 	},
 	{
-		title: "global.sidebar.networking",
-		href: "/networking/",
+		title: "pages.news.title",
+		href: "/news/",
 		icon: "newspaper-o",
-		testId: "Meine Dateien",
-		children: [
-			{
-				title: "global.sidebar.chat",
-				icon: "folder-open-o",
-				href: "/chat/",
-				testId: "Chat",
-			},
-			{
-				title: "global.sidebar.marktplatz",
-				icon: "newspaper-o",
-				href: "/marktplatz/",
-				testId: "Marktplatz",
-			},
-			{
-				title: "pages.news.title",
-				href: "/news/",
-				icon: "folder-open-o",
-				testId: "Neuigkeiten",
-			},
-			{
-				title: "global.sidebar.lernstore",
-				to: "/content",
-				icon: "search",
-				permission: "LERNSTORE_VIEW",
-				testId: "Lern-Store",
-			},
-		],
+		testId: "Neuigkeiten",
 	},
 	{
 		title: "global.sidebar.files",
@@ -133,18 +106,9 @@ export default [
 	},
 	{
 		title: "global.sidebar.games",
-		to: "/games/",
-		title: "global.sidebar.lernstore",
-		to: "/content",
-		icon: "search",
-		permission: "LERNSTORE_VIEW",
-		testId: "Lern-Store",
-	},
-	{
-		title: "global.sidebar.addons",
-		href: "/addons",
+		href: "/games",
 		icon: "puzzle-piece",
-		testId: "Aufgaben",
+		testId: "Lernspiele",
 	},
 	{
 		title: "global.sidebar.management",

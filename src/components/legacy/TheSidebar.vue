@@ -141,6 +141,7 @@ div:nth-child(even) {
 	overflow-y: auto;
 	// box-shadow: 0 5px 5px var(--color-gray-light);
 	transition: display 2s;
+	 background-color: #93A7CA;
 
 
 
@@ -199,6 +200,7 @@ div:nth-child(even) {
 		display: flex;
 		flex: 1;
 		flex-direction: column;
+		 background-color: #93A7CA;
 
 		.list {
 			flex: 1;
@@ -206,6 +208,7 @@ div:nth-child(even) {
 			padding: 0;
 			margin: 0;
 			list-style-type: none;
+			color: #93A7CA;
 
 			
 
