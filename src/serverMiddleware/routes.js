@@ -55,6 +55,7 @@ const routes = [
 	`^/memorielvl2/?$`,
 	`^/memorielvl3/?$`,
 	`^/memorie/add`,
+	`^/mensa/?$`,
 
 ];
 
