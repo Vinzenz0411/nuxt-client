@@ -42,7 +42,7 @@ export default {
         {
         id: "1",
         title: "Vokabel",
-        describe: "Hier einfache Engisch Vokabeln",
+        describe: "Hier einfache Englisch Vokabeln",
         level:"leicht",
         classes: "6c",
         type: "memory",
@@ -101,5 +101,6 @@ export default {
   display: inline;
 }
 </style>
+
 
 
