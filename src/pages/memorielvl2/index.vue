@@ -32,7 +32,7 @@
 </template>
 <script>
 import Modal from "@/components/organisms/Memory/Modal.vue";
-import Card from '@/components/organisms/Memory/card.vue';
+import Card from '@/components/organisms/Memory/Card.vue';
 export default {
   name: "App",
   components: {
