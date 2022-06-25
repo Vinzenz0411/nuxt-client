@@ -77,6 +77,7 @@ export default {
       firstPick: null,
       secondPick: null,
       turns: 0,
+      timeChecker: 0,
       start:false,
       done: false,
       totalTime: {
@@ -118,8 +119,9 @@ export default {
   methods: {
     handleClick(card) {
      this.start = true;
-     if (this.turns <= 0){
+     if (this.timeChecker <= 0){
         this.startTime();
+        this.timeChecker++;
      }
       this.firstPick ? (this.secondPick = card) : (this.firstPick = card);
       if (this.firstPick && this.secondPick) {
