@@ -22,7 +22,7 @@
 
     <v-row>
     <v-col>
-    <v-card to="/calendar/">
+    <v-card to="/vertretung/">
       <div class="sc-card">
          <div class="sc-card-header" style="background-color: #93A7CA">
         <span class="sc-card-title">
@@ -42,7 +42,7 @@
  
     <v-row>
     <v-col>
-    <v-card to="/calendar/">
+    <v-card to="/mensa/">
     <div class="sc-card">
        <div class="sc-card-header" style="background-color: #5672a1">
         <span class="sc-card-title">
