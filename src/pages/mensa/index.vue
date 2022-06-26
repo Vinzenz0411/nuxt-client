@@ -4,7 +4,9 @@
         <h3>Mensaplan</h3>
 
         <img 
-		src="@assets/img/Mensaplan01.png"
+
+		src="@assets/img/Speiseplan.jpeg"
+
 		alt="Mensaplan"
 	/>
         
@@ -101,18 +103,15 @@ select{
     background-color: #93A7CA;
     color: #ffffff;
 }
-
 .submit {
     background-color: #93A7CA;
     color: #ffffff;
 }
-
 /*point the arrow upwards when the select box is open (active):*/
 .select-selected.select-arrow-active:after {
   border-color: transparent transparent #fff transparent;
   top: 7px;
 }
-
 /*style the items (options), including the selected item:*/
 .select-items div,.select-selected {
   color: #ffffff;
@@ -122,7 +121,6 @@ select{
   cursor: pointer;
   user-select: none;
 }
-
 /*style items (options):*/
 .select-items {
   position: absolute;
@@ -132,16 +130,13 @@ select{
   right: 0;
   z-index: 99;
 }
-
 /*hide the items when the select box is closed:*/
 .select-hide {
   display: none;
 }
-
 .select-items div:hover, .same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
 }
-
 h1 {
     font-family: 'Poppins', sans-serif, 'arial';
     font-weight: 600;
@@ -149,7 +144,6 @@ h1 {
     color: white;
     text-align: center;
 }
-
 h4 {
     font-family: 'Roboto', sans-serif, 'arial';
     font-weight: 400;
@@ -157,9 +151,7 @@ h4 {
     color: #9b9b9b;
     line-height: 1.5;
 }
-
 /* ///// inputs /////*/
-
 input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid ~ label {
     font-size: 0.75em;
     color: #999;
@@ -167,7 +159,6 @@ input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid
     -webkit-transition: all 0.225s ease;
     transition: all 0.225s ease;
 }
-
 .styled-input {
     float: left;
     width: 293px;
@@ -175,13 +166,11 @@ input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid
     position: relative;
     border-radius: 4px;
 }
-
 @media only screen and (max-width: 768px){
     .styled-input {
         width:100%;
     }
 }
-
 .styled-input label select #black{
     color: #999;
     padding: 1.3rem 30px 1rem 30px;
@@ -192,12 +181,10 @@ input:focus ~ label, textarea:focus ~ label, input:valid ~ label, textarea:valid
     transition: all 0.25s ease;
     pointer-events: none;
 }
-
 .styled-input.wide select  #black { 
     width: 650px;
     max-width: 100%;
 }
-
 input,
 textarea select  #black {
     padding: 30px;
@@ -208,10 +195,8 @@ textarea select  #black {
     color: white;
     border-radius: 4px;
 }
-
 input:focus, select:focus,
 textarea:focus { outline: 0; }
-
 input:focus ~ span,
 select:focus ~ span,
 textarea:focus ~ span {
@@ -219,18 +204,15 @@ textarea:focus ~ span {
     -webkit-transition: all 0.075s ease;
     transition: all 0.075s ease;
 }
-
 textarea {
     width: 100%;
     min-height: 15em;
 }
-
 .input-container {
     width: 650px;
     max-width: 100%;
     margin: 20px auto 25px auto;
 }
-
 .submit-btn {
     margin-left: 30%;
     padding: 7px 35px;
@@ -244,13 +226,11 @@ textarea {
     -webkit-transition: all 300ms ease;
     transition: all 300ms ease;
 }
-
 .submit-btn:hover {
     transform: translateY(1px);
     box-shadow: 0 1px 1px 0 rgba(0,0,0,0.10),
               0 1px 1px 0 rgba(0,0,0,0.09);
 }
-
 @media (max-width: 768px) {
     .submit-btn {
         margin-top: 50px;
@@ -259,89 +239,18 @@ textarea {
         text-align:center;
     }
 }
-
 input[type=checkbox] + label {
   color: #ccc;
   font-style: italic;
 } 
-
 input[type=checkbox]:checked + label {
   color: #f00;
   font-style: normal;
 }
-.pdfreader{
-  margin-left: -200px;
-}
-@media only screen and (min-width: 300px) {
-  .pdfreader {
-    width: 340px;
-    height: 900px;
-    margin-left: -20px;
-  }
-}
-@media only screen and (min-width: 400px) {
-  .pdfreader {
-    width: 380px;
-    height: 900px;
-    margin-left: -20px;
-  }
-}
-@media only screen and (min-width: 765px) {
-  .pdfreader {
-    width: 680px;
-    height: 900px;
-    margin-left: -25px;
-  }
-}
-@media only screen and (min-width: 900px) {
-  .pdfreader {
-    width: 720px;
-    height: 900px;
-    margin-left: -100px;
-  }
-}
-@media only screen and (min-width: 1000px) {
-  .pdfreader {
-    width: 750px;
-    height: 900px;
-    margin-left: -75px;
-  }
-}
-@media only screen and (min-width: 1300px) {
-  .pdfreader {
-    width: 900px;
-    height: 900px;
-    margin-left: -130px;
-  }
-}
-h3{
-  margin-left: -200px;
+h3 {
+
   margin-bottom: 25px;
-}
-@media only screen and (min-width: 300px) {
-  h3 {
-    margin-left: -20px;
-  }
-}
-@media only screen and (min-width: 765px) {
-  h3 {
-    margin-left: -25px;
-  }
-}
-@media only screen and (min-width: 900px) {
-  h3 {
-    margin-left: -100px;
-  }
-}
-@media only screen and (min-width: 1000px) {
-  h3 {
-    margin-left: -75px;
-  }
-}
-@media only screen and (min-width: 1300px) {
-  h3 {
-    margin-left: -130px;
-  }
+
 }
 </style>
 <script>
@@ -391,7 +300,5 @@ export default {
             return new Date();
           }
   },
-
-
 }
 </script>
