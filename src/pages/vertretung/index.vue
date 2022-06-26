@@ -2,7 +2,7 @@
   <div>
     <h3>Mein Vertretungsplan</h3>
 		<img 
-			src="@assets/img/Vertretungsplan01.png"
+			src="@assets/img/Vertretungsplan.jpeg"
 			alt="Vertretungsplan"
 		/>
   </div>
