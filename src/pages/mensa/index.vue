@@ -3,7 +3,10 @@
 <div>
         <h3>Mensaplan</h3>
 
-        <embed class="pdfreader" src="/pdf/Dok1.pdf" />
+        <img 
+		src="@assets/img/Mensaplan01.png"
+		alt="Mensaplan"
+	/>
         
         <div class="container">
 	<div class="row">
